@@ -15,7 +15,8 @@ Display the workouts for the next seven days
 	exports.params = [
 		{name: "year"},
 		{name: "month"},
-		{name: "day"}
+		{name: "day"},
+		{name: "template", default: "$:/plugins/sbruce/fitness/calendar-template.tid"}
 	];
 
 	var nextDay = function(date) {
@@ -25,13 +26,20 @@ Display the workouts for the next seven days
 	};
 
 
-	exports.run = function(year, month, day) {
+	exports.run = function(year, month, day, template) {
 		var result = "|";
 		var today = new Date(year, month, day);
+		// Display the header
 		for (var i = 0; i < 7; i++) {
 			result = result + today.getMonth() + "/" + today.getDate() + "|";
 			today = nextDay(today);
 		}
+		result = result + "\n|";
+		for (var i = 0; i < 7; i++) {
+			result = result + "<$list filter=\"[tag[Workout]year[" + year + "]day[" + day + "]]\">{{||" + template + "}}</$list>|";
+		}
+
+		result = result + "\n";
 		return result;
 	};
 

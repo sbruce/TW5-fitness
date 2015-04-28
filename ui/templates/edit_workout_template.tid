@@ -1,0 +1,30 @@
+title: $:/plugins/sbruce/fitness/templates/WorkoutTemplate
+
+\define getWorkoutName()
+Workout-$(qual)$
+\end
+
+
+||!Planned|!Completed|
+|!Date|//TODO: Add date selector//|
+|!Duration|<$edit-text tiddler="$:/WorkoutTemp" field="estimated-time" placeholder="00:00:00" size="10"/>|<$edit-text tiddler="$:/WorkoutTemp" field="completed-time" placeholder="00:00:00" size="10"/>|
+|!Distance|||
+|!Average Speed|||
+|!Elevation Gain|||
+
+
+|!Description|
+|<$edit-text tiddler="$:/WorkoutTemp" field="text" autoHeight="yes" tag="textarea"/>|
+
+|!Post Activity Comments|
+|<$edit-text tiddler="$:/sbruce/WorkTemp" field="post-comments" tag="textarea"/>|
+
+<$fieldmangler>
+<$button>Create Workout
+<$set name="qual" value=<<now>>>
+<$action-setfield $tiddler="$:/WorkoutTime" text=<<getWorkoutName>>/>
+</$set>
+<$action-setfield $tiddler={{$:/WorkoutTime}} estimated-time={{$:/WorkoutTemp!!estimated-time}} actual-time={{$:/WorkoutTemp!!actual-time}} text={{$:/WorkoutTemp!!text}}/>
+<$action-deletefield $tiddler="$:/WorkoutTemp" estimated-time actual-time text/>
+</$button>
+</$fieldmangler>

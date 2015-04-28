@@ -1,3 +1,3 @@
-title: $:/plugins/sbruce/fitness/calendar-template.tid
+title: $:/plugins/sbruce/fitness/calendar-template
 
-{{||title}}
+<$link to={{!!title}}>Workout</$link>

@@ -2,6 +2,7 @@
 	"title": "$:/plugins/sbruce/fitness",
 	"description": "Fitness Tools for TiddlyWiki",
 	"author": "Shaun Bruce",
-	"core-version": ">=5.0.0",
-	"list": "readme"
+	"core-version": ">=5.1.4",
+	"list": "readme",
+	"version": "0.0.1-dev"
 }

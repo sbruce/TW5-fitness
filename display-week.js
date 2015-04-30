@@ -62,6 +62,10 @@ Display the workouts for the next seven days
 		var result = "|";
 		var today = new Date(year + "/" + month + "/" + day);
 		var sunday = findSunday(today);
+
+		// Apply the offset, if any
+		sunday.setDate(sunday.getDate() + (Number(offset) * 7));
+
 		var curDay = new Date(sunday);
 		// Display the header
 		for (var i = 0; i < 7; i++) {

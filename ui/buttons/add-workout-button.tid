@@ -1,0 +1,10 @@
+title: $/plugins/sbruce/fitness/ui/buttons/add-workout-button
+tags: $:/tags/PageControls
+caption: {{$:/core/images/refresh-button}} new workout
+description: Add new workout
+
+<$set name="fitness_type" value="workout">
+<$gsdtiddler skeleton="$/plugins/sbruce/fitness/ui/skeletons/WorkoutSkeleton" edit="yes" title="Add new workout">
++
+</$gsdtiddler>
+</$set>

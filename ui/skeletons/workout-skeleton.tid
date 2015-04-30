@@ -1,2 +1,3 @@
 title: $/plugins/sbruce/fitness/ui/skeletons/WorkoutSkeleton
 fitness_type: $(fitness_type)$
+workout_date: $(workout_date)$

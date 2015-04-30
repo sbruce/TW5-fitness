@@ -14,7 +14,8 @@ Display the workouts for the next seven days
 
 	exports.params = [
 		{name: "dateString"},
-		{name: "template", default: "$:/plugins/sbruce/fitness/calendar-template"}
+		{name: "template", default: "$:/plugins/sbruce/fitness/calendar-template"},
+		{name: "offset", default: "0"}
 	];
 
 	var nextDay = function(date) {
@@ -50,7 +51,7 @@ Display the workouts for the next seven days
 		return dateInput.getFullYear() + month + date;
 	}
 
-	exports.run = function(dateString, template) {
+	exports.run = function(dateString, template, offset) {
 		if (dateString.length < 8) {
 			return;
 		}

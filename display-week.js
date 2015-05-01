@@ -24,6 +24,8 @@ Display the workouts for the next seven days
 		return tomorrow;
 	};
 
+  /* Split a workout dateString: 20150401 into a [year, month, day] array
+	*/
 	var splitDate = function(dateString) {
 		var year = dateString.substr(0,4);
 		var month = dateString.substr(4,2);
@@ -59,7 +61,7 @@ Display the workouts for the next seven days
 		var year = parsedDate[0];
 		var month = parsedDate[1];
 		var day = parsedDate[2];
-		var result = "|";
+		var result = "|calendar-table |k\n|";
 		var today = new Date(year + "/" + month + "/" + day);
 		var sunday = findSunday(today);
 

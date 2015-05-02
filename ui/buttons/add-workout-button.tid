@@ -5,7 +5,7 @@ description: Add new workout
 
 <$set name="fitness_type" value="workout">
 <$set name="workout_date" value=<<now YYYY0MM0DD>>>
-<$gsdtiddler skeleton="$/plugins/sbruce/fitness/ui/skeletons/WorkoutSkeleton" edit="yes" title="Add new workout">
+<$gsdtiddler skeleton="$/plugins/sbruce/fitness/ui/skeletons/WorkoutSkeleton" edit="show" title="Add new workout">
 +
 </$gsdtiddler>
 </$set>

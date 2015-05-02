@@ -25,3 +25,7 @@ type: text/css
 .calendar-table th {
 	height: 1em;
 }
+
+.date_today {
+	color: green;
+}

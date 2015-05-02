@@ -58,6 +58,13 @@ Display the workouts for the next seven days
         return Math.ceil((((date - onejan) / 86400000) + onejan.getDay() + 1) / 7);
     }
 
+	var compareDate = function(d1, d2) {
+		if (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDate() == d2.getDate()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	exports.run = function(dateString, template, offset) {
 		if (dateString.length < 8) {
@@ -71,22 +78,32 @@ Display the workouts for the next seven days
 		var sunday = findSunday(today);
 		// Apply the offset, if any
 		sunday.setDate(sunday.getDate() + (Number(offset) * 7));
-		var result = "Week: " + getWeek(sunday) + "\n\n|calendar-table |k\n|";
+
+		var result = "Week: " + getWeek(sunday) + "\n\n";
+		result = result + "<table class=\"calendar-table\">\n"
 
 		var curDay = new Date(sunday);
 		// Display the header
+		result = result + "<tr>\n"
 		for (var i = 0; i < 7; i++) {
-			result = result + "!" + curDay.getMonth() + "/" + curDay.getDate() + "|";
+			if (compareDate(curDay, today) == true) {
+				result = result + "<th class=\"date_today\">";
+			} else {
+				result = result + "<th>";
+			}
+			result = result + curDay.getMonth() + "/" + curDay.getDate() + "</th>\n";
 			curDay = nextDay(curDay);
 		}
-		result = result + "\n|";
+		result = result + "</tr>\n";
+		// Start of the data row
+		result = result + "<tr>\n";
 		var curDay = new Date(sunday)
 		for (var i = 0; i < 7; i++) {
-			result = result + "<$list filter='[workout_date[" + dateToDateString(curDay) + "]!has[draft.of]]'>{{||" + template + "}}</$list>|";
+			result = result + "<td><$list filter='[workout_date[" + dateToDateString(curDay) + "]!has[draft.of]]'>{{||" + template + "}}</$list></td>\n"
 			curDay = nextDay(curDay);
 		}
 
-		result = result + "\n";
+		result = result + "</tr></table>\n";
 		return result;
 	};
 

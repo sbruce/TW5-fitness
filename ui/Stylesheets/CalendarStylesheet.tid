@@ -3,21 +3,25 @@ tags: $:/tags/Stylesheet
 type: text/css
 
 .calendar-table {
-	border: 0px;
-    overflow: hidden;
-    vertical-align: top;
-    width: 100%;
+	border: 1px solid black;
+  overflow: hidden;
+  vertical-align: top;
+  width: 100%;
 }
 
 .calendar-table table {
-	width:95%;
+	width:100%;
 }
 
 .calendar-table td, th {
-    width: 14%;
-    vertical-align: top;
+  width: 14%;
+  vertical-align: top;
 }
 
 .calendar-table td {
-        height: 100px;
+  height: 5em;
+}
+
+.calendar-table th {
+	height: 1em;
 }

@@ -71,7 +71,7 @@ Display the workouts for the next seven days
 		var curDay = new Date(sunday);
 		// Display the header
 		for (var i = 0; i < 7; i++) {
-			result = result + curDay.getMonth() + "/" + curDay.getDate() + "|";
+			result = result + "!" + curDay.getMonth() + "/" + curDay.getDate() + "|";
 			curDay = nextDay(curDay);
 		}
 		result = result + "\n|";

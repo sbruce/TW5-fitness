@@ -53,6 +53,12 @@ Display the workouts for the next seven days
 		return dateInput.getFullYear() + month + date;
 	}
 
+	var getWeek = function(date) {
+        var onejan = new Date(date.getFullYear(), 0, 1);
+        return Math.ceil((((date - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+    }
+
+
 	exports.run = function(dateString, template, offset) {
 		if (dateString.length < 8) {
 			return;
@@ -61,12 +67,11 @@ Display the workouts for the next seven days
 		var year = parsedDate[0];
 		var month = parsedDate[1];
 		var day = parsedDate[2];
-		var result = "|calendar-table |k\n|";
 		var today = new Date(year + "/" + month + "/" + day);
 		var sunday = findSunday(today);
-
 		// Apply the offset, if any
 		sunday.setDate(sunday.getDate() + (Number(offset) * 7));
+		var result = "Current Week: " + getWeek(sunday) + "\n\n|calendar-table |k\n|";
 
 		var curDay = new Date(sunday);
 		// Display the header

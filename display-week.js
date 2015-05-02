@@ -77,7 +77,7 @@ Display the workouts for the next seven days
 		result = result + "\n|";
 		var curDay = new Date(sunday)
 		for (var i = 0; i < 7; i++) {
-			result = result + "<$list filter='[workout_date[" + dateToDateString(curDay) + "]]'>{{||" + template + "}}</$list>|";
+			result = result + "<$list filter='[workout_date[" + dateToDateString(curDay) + "]!has[draft.of]]'>{{||" + template + "}}</$list>|";
 			curDay = nextDay(curDay);
 		}
 

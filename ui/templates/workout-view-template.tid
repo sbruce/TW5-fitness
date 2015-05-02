@@ -1,0 +1,13 @@
+title: $:/plugins/sbruce/fitness/ui/templates/WorkoutViewTemplate
+tags: $:/tags/ViewTemplate
+
+<$list filter=[is[current]field:fitness_type[workout]]>
+
+||!Planned|!Completed|
+|!Date YYYYMMDD|<$edit-text field="workout_date" placeholder="YYYYMMDD" size=10/>||
+|!Duration (hh:mm)|<$edit-text field="planned_time" placeholder="00:00" size="10"/>|<$edit-text  field="actual_time" placeholder="00:00" size="10"/>|
+|!Distance (miles)|<$edit-text field="planned_distnace" placeholder="0.00" size="10"/>|<$edit-text  field="actual_distance" placeholder="0.00" size="10"/>|
+|!Average Speed|<$edit-text field="planned_speed" placeholder="0" size="10"/>|<$edit-text  field="actual_speed" placeholder="0" size="10"/>|
+|!Elevation Gain|<$edit-text field="planned_elevation" placeholder="0" size="10"/>|<$edit-text  field="actual_elevation" placeholder="0" size="10"/>|
+
+</$list>

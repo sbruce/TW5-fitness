@@ -71,7 +71,7 @@ Display the workouts for the next seven days
 		var sunday = findSunday(today);
 		// Apply the offset, if any
 		sunday.setDate(sunday.getDate() + (Number(offset) * 7));
-		var result = "Current Week: " + getWeek(sunday) + "\n\n|calendar-table |k\n|";
+		var result = "Week: " + getWeek(sunday) + "\n\n|calendar-table |k\n|";
 
 		var curDay = new Date(sunday);
 		// Display the header

@@ -5,10 +5,10 @@ New Workout{{$/plugins/sbruce/fitness/ui/buttons/add-workout-button}}
 </$set>
 
 !Calendar
-<$macrocall $name="displayWeek" offset=0 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" start_of_week={{$:/config/fitness/start-of-week}}/>
+<$macrocall $name="displayWeek" offset=0 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
 
-<$macrocall $name="displayWeek" offset=1 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" start_of_week={{$:/config/fitness/start-of-week}}/>
+<$macrocall $name="displayWeek" offset=1 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
 
-<$macrocall $name="displayWeek" offset=2 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" start_of_week={{$:/config/fitness/start-of-week}}/>
+<$macrocall $name="displayWeek" offset=2 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
 
-<$macrocall $name="displayWeek" offset=3 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" start_of_week={{$:/config/fitness/start-of-week}}/>
+<$macrocall $name="displayWeek" offset=3 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>

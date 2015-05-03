@@ -16,7 +16,7 @@ Display the workouts for the next seven days
 		{name: "dateString"},
 		{name: "template", default: "$:/plugins/sbruce/fitness/calendar-template"},
 		{name: "offset", default: "0"},
-		{name: "start_of_week", default: "monday"}
+		{name: "sow", default: "monday"}
 	];
 
 	var nextDay = function(date) {
@@ -45,9 +45,20 @@ Display the workouts for the next seven days
 		if (day == 'monday') {
 			var i = 1;
 		}
+
+		if (startOfWeek.getDay() == i) {
+			return startOfWeek;
+		}
+		// If today is Sunday and the start of the week is monday
+		if (startOfWeek.getDay() == 0 && day == 'monday') {
+			startOfWeek.setDate(startOfWeek.getDate() - 6);
+			return startOfWeek;
+		}
+
 		for (;i < date.getDay(); i++) {
 			startOfWeek.setDate(startOfWeek.getDate() - 1);
 		}
+
 		return startOfWeek;
 	}
 
@@ -77,7 +88,7 @@ Display the workouts for the next seven days
 	}
 
 
-	exports.run = function(dateString, template, offset, start_of_week) {
+	exports.run = function(dateString, template, offset, sow) {
 		if (dateString.length < 8) {
 			return;
 		}
@@ -86,7 +97,7 @@ Display the workouts for the next seven days
 		var month = parsedDate[1];
 		var day = parsedDate[2];
 		var today = new Date(year + "/" + month + "/" + day);
-		var startOfWeek = findStartOfWeek(today, start_of_week);
+		var startOfWeek = findStartOfWeek(today, sow);
 		// Apply the offset, if any
 		startOfWeek.setDate(startOfWeek.getDate() + (Number(offset) * 7));
 

@@ -33,12 +33,21 @@ Display the workouts for the next seven days
 		return [year, month, day];
 	}
 
-	var findSunday = function(date) {
-		var sunday = new Date(date);
-		for (var i = 0; i < date.getDay(); i++) {
-			sunday.setDate(sunday.getDate() - 1);
+  /* TODO: change to findStartOfWeek
+		 Add an option to select the start of the week (Sun or Mon)
+	*/
+	var findStartOfWeek = function(date, day) {
+		var startOfWeek = new Date(date);
+		if (day == 'startOfWeek') {
+			var i = 0;
 		}
-		return sunday;
+		if (day == 'monday') {
+			var i = 1;
+		}
+		for (;i < date.getDay(); i++) {
+			startOfWeek.setDate(startOfWeek.getDate() - 1);
+		}
+		return startOfWeek;
 	}
 
 	var dateToDateString = function(dateInput) {
@@ -75,14 +84,14 @@ Display the workouts for the next seven days
 		var month = parsedDate[1];
 		var day = parsedDate[2];
 		var today = new Date(year + "/" + month + "/" + day);
-		var sunday = findSunday(today);
+		var startOfWeek = findStartOfWeek(today, 'monday');
 		// Apply the offset, if any
-		sunday.setDate(sunday.getDate() + (Number(offset) * 7));
+		startOfWeek.setDate(startOfWeek.getDate() + (Number(offset) * 7));
 
-		var result = "Week: " + getWeek(sunday) + "\n\n";
+		var result = "Week: " + getWeek(startOfWeek) + "\n\n";
 		result = result + "<table class=\"calendar-table\">\n"
 
-		var curDay = new Date(sunday);
+		var curDay = new Date(startOfWeek);
 		// Display the header
 		result = result + "<tr>\n"
 		for (var i = 0; i < 7; i++) {
@@ -97,7 +106,7 @@ Display the workouts for the next seven days
 		result = result + "</tr>\n";
 		// Start of the data row
 		result = result + "<tr>\n";
-		var curDay = new Date(sunday)
+		var curDay = new Date(startOfWeek)
 		for (var i = 0; i < 7; i++) {
 			result = result + "<td><$list filter='[workout_date[" + dateToDateString(curDay) + "]!has[draft.of]]'>{{||" + template + "}}</$list></td>\n"
 			curDay = nextDay(curDay);

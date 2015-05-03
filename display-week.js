@@ -46,7 +46,7 @@ Display the workouts for the next seven days
 			} else {
 				result = result + "<th>";
 			}
-			result = result + (Number(curDay.getMonth()) + 1) + "/" + curDay.getDate();
+			result = result + calendar.printShortDay(curDay) + " " + (Number(curDay.getMonth()) + 1) + "/" + curDay.getDate();
 			result = result + "<$set name=\"workout_date\" value=\"" + calendar.dateToDateString(curDay)  + "\">{{$/plugins/sbruce/fitness/ui/buttons/add-workout-button}}</$set>"
 			result = result + "</th>\n";
 			curDay = calendar.nextDay(curDay);

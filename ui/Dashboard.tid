@@ -1,6 +1,8 @@
 title: Dashboard
 
+<$set name="workout_date" value=<<now YYYY0MM0DD>>>
 New Workout{{$/plugins/sbruce/fitness/ui/buttons/add-workout-button}}
+</$set>
 
 !Calendar
 <$macrocall $name="displayWeek" offset=0 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template"/>

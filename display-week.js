@@ -100,7 +100,7 @@ Display the workouts for the next seven days
 			} else {
 				result = result + "<th>";
 			}
-			result = result + curDay.getMonth() + "/" + curDay.getDate() + "</th>\n";
+			result = result + (Number(curDay.getMonth()) + 1) + "/" + curDay.getDate() + "</th>\n";
 			curDay = nextDay(curDay);
 		}
 		result = result + "</tr>\n";

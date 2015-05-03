@@ -1,0 +1,3 @@
+title: $:/plugins/sbruce/fitness/config
+
+| !Start of Week:|<$select tiddler="$:/config/fitness/start-of-week" default="monday"><option value="sunday">Sunday</option><option value="monday">Monday</option></$select>|

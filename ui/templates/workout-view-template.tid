@@ -9,5 +9,6 @@ tags: $:/tags/ViewTemplate
 |!Distance (miles)|<$edit-text field="planned_distnace" placeholder="0.00" size="10"/>|<$edit-text  field="actual_distance" placeholder="0.00" size="10"/>|
 |!Average Speed|<$edit-text field="planned_speed" placeholder="0" size="10"/>|<$edit-text  field="actual_speed" placeholder="0" size="10"/>|
 |!Elevation Gain|<$edit-text field="planned_elevation" placeholder="0" size="10"/>|<$edit-text  field="actual_elevation" placeholder="0" size="10"/>|
+|!Link to Data File|<$edit-text field="workout_link" placeholder="http://" size="20"/>|<$reveal type="match" text="" state={{!!workout_link}} default="">{{!!workout_link}}</$reveal>|
 
 </$list>

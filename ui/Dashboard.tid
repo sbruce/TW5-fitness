@@ -4,6 +4,10 @@ title: Dashboard
 New Workout{{$/plugins/sbruce/fitness/ui/buttons/add-workout-button}}
 </$set>
 
+[[Workout Options|$:/plugins/sbruce/fitness/ui/WorkoutOptions]]
+
+[[Training Phase Setup|$:/plugins/sbruce/fitness/ui/WeekConfig]]
+
 !Calendar
 <$macrocall $name="displayWeek" offset=0 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
 

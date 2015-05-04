@@ -1,0 +1,10 @@
+title: $:/plugins/sbruce/fitness/ui/WorkoutOptions
+
+<$list filter="[all[shadows+tiddlers]field:fitness_type[workout_option]!has[draft.of]]">
+<$list filter="[title{!!title}has[name]]">
+{{!!name}}
+</$list>
+<$list filter="[title{!!title}!has[name]]">
+{{!!title}}
+</$list><br>
+</$list>

@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/gsd5/core/modules/widgets/gsdtiddler.js
+title: $:/plugins/sbruce/fitness/widgets/gsdtiddler.js
 type: application/javascript
 module-type: widget
 

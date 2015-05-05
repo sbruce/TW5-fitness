@@ -4,5 +4,5 @@
 	"author": "Shaun Bruce",
 	"core-version": ">=5.1.4",
 	"list": "readme config",
-	"version": "0.0.1"
+	"version": "0.0.2-dev"
 }

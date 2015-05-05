@@ -32,13 +32,16 @@ Macro to configure a week
 			var day = parsedDate[2];
 			var date = new Date(year + "/" + month + "/" + day);
 		}
-		var startWeek = calendar.getWeek(date);
+		var startOfWeek = calendar.findStartOfWeek(date, "monday");
+		var startingWeek = calendar.getWeek(date);
 		var result = "|!Week|!Training Phase|\n";
 
-		for (var week = startWeek;week < 53; week++) {
-			result = result + "|Week " + week + "|<$select tiddler='" + WEEK_CONFIG + "' index='" + date.getFullYear() + week + "'>";
-			result = result + "<$list filter='[all[shadows+tiddlers]field:fitness_type[training_phase]]'>";
+		for (var week = startingWeek;week < 53; week++) {
+			result = result + "|Week " + week + " (" + (startOfWeek.getMonth() + 1) + "/" + startOfWeek.getDate() + ")|<$select tiddler='" + WEEK_CONFIG + "' index='" + date.getFullYear() + week + "' default='$:/plugins/sbruce/training/phases/Undefined'>";
+			result = result + "<option value=''> </option>";
+			result = result + "<$list filter='[all[shadows+tiddlers]field:fitness_type[training_phase]!title[$:/plugins/sbruce/training/phases/Undefined]]'>";
 			result = result + "<option value={{!!title}}><$view field='name'/></option></$list></$select>|\n";
+			startOfWeek.setDate(startOfWeek.getDate() + 7);
 		}
 		return result;
 	};

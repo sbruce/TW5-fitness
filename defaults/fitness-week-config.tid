@@ -1,0 +1,4 @@
+title: $:/config/fitness-week-config
+type: application/x-tiddler-dictionary
+
+default: $:/plugins/sbruce/training/phases/RestAndRecovery

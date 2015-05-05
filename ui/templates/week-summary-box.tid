@@ -1,0 +1,35 @@
+title: $:/plugins/sbruce/fitness/templates/WeekSummaryBox
+
+\define getPhaseName()
+{{$(phase)$!!name}}
+\end
+
+\define getWeekIndex()
+<$set name="phase" value={{$:/config/fitness-week-config##2015$(week)$}} filter="[getindex[2015$(week)$]]" emptyValue="$:/plugins/sbruce/training/phases/Undefined">
+- <<getPhaseName>>
+</$set>
+\end
+
+\define showButton()
+<$button popup=<<qualify $:/state/week-view-$(week)$>> class="tc-btn-invisible">+ Week $(week)$</$button>
+\end
+
+\define showSummary()
+<$reveal state=<<qualify "$:/state/week-view-$(week)$">> type="nomatch" text="">
+
+<div class="tc-message-box">
+
+||!Planned|!Actual|
+|!Time|||
+|!Distance|||
+
+</div>
+</$reveal>
+
+\end
+
+<$set name="week" value=<<week>>>
+<<showButton>>
+<<getWeekIndex>>
+<<showSummary>>
+</$set>

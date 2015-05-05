@@ -34,7 +34,10 @@ Display the workouts for the next seven days
 		// Apply the offset, if any
 		startOfWeek.setDate(startOfWeek.getDate() + (Number(offset) * 7));
 
-		var result = "Week: " + calendar.getWeek(startOfWeek) + "\n\n";
+		var result = "<$set name=\"week\" value=" + calendar.getWeek(startOfWeek) + ">\n";
+		result = result + "{{$:/plugins/sbruce/fitness/templates/WeekSummaryBox}}\n";
+
+
 		result = result + "<table class=\"calendar-table\">\n"
 
 		var curDay = new Date(startOfWeek);

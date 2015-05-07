@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/sbruce/fitness/display-week.js
+title: $:/plugins/sbruce/fitness/macros/display-week.js
 type: application/javascript
 module-type: macro
 
@@ -17,30 +17,27 @@ Display the workouts for the next seven days
 	exports.params = [
 		{name: "dateString"},
 		{name: "template", default: "$:/plugins/sbruce/fitness/calendar-template"},
-		{name: "offset", default: "0"},
 		{name: "sow", default: "monday"}
 	];
 
-	exports.run = function(dateString, template, offset, sow) {
+	exports.run = function(dateString, template, sow) {
 		if (dateString.length < 8) {
 			return;
 		}
-		var parsedDate = calendar.splitDate(dateString);
-		var year = parsedDate[0];
-		var month = parsedDate[1];
-		var day = parsedDate[2];
-		var today = new Date(year + "/" + month + "/" + day);
-		var startOfWeek = calendar.findStartOfWeek(today, sow);
-		// Apply the offset, if any
-		startOfWeek.setDate(startOfWeek.getDate() + (Number(offset) * 7));
+		var split_date = calendar.splitDate(dateString);
+		var year = split_date[0];
+		var month = split_date[1];
+		var day = split_date[2];
+		var date = new Date(year + "/" + month + "/" + day);
+		var today = new Date();
+		var start_of_week = calendar.findStartOfWeek(date, sow);
 
-		var result = "<$set name=\"week\" value=" + calendar.getWeek(startOfWeek) + ">\n";
+		var result = "<$set name=\"week\" value=" + calendar.getWeek(start_of_week) + ">\n";
 		result = result + "{{$:/plugins/sbruce/fitness/templates/WeekSummaryBox}}\n";
-
 
 		result = result + "<table class=\"calendar-table\">\n"
 
-		var curDay = new Date(startOfWeek);
+		var curDay = new Date(start_of_week);
 		// Display the header
 		result = result + "<tr>\n"
 		for (var i = 0; i < 7; i++) {
@@ -57,7 +54,7 @@ Display the workouts for the next seven days
 		result = result + "</tr>\n";
 		// Start of the data row
 		result = result + "<tr>\n";
-		var curDay = new Date(startOfWeek)
+		var curDay = new Date(start_of_week)
 		for (var i = 0; i < 7; i++) {
 			result = result + "<td><$list filter='[workout_date[" + calendar.dateToDateString(curDay) + "]!has[draft.of]]'>{{||" + template + "}}</$list></td>\n"
 			curDay = calendar.nextDay(curDay);

@@ -4,15 +4,14 @@ title: Dashboard
 New Workout{{$/plugins/sbruce/fitness/ui/buttons/add-workout-button}}
 </$set>
 
+<$set name="offset" value={{$:/config/fitnessCalendarOffset}} emptyValue=0>
+
 [[Workout Options|$:/plugins/sbruce/fitness/ui/WorkoutOptions]]
 
 [[Training Phase Setup|$:/plugins/sbruce/fitness/ui/WeekConfig]]
 
-!Calendar
-<$macrocall $name="displayWeek" offset=0 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
+!<$button class="tc-btn-invisible" ><$action-addvalue $tiddler="$:/config/fitnessCalendarOffset" $value="-1"/>--</$button><$button class="tc-btn-invisible" ><$action-setfield $tiddler="$:/config/fitnessCalendarOffset" $value="0"/>Calendar </$button><$button class="tc-btn-invisible"><$action-addvalue $tiddler="$:/config/fitnessCalendarOffset" $value="1"/>++</$button>
 
-<$macrocall $name="displayWeek" offset=1 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
+<$macrocall $name="displayTrainingCalendar" offset=<<offset>> startingDate=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
 
-<$macrocall $name="displayWeek" offset=2 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
-
-<$macrocall $name="displayWeek" offset=3 dateString=<<now YYYY0MM0DD>> template="$:/plugins/sbruce/fitness/templates/calendar-template" sow={{$:/config/fitness/start-of-week}}/>
+</$set>
